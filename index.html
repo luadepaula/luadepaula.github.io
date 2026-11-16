@@ -444,6 +444,80 @@
     }
     .case-metric-lbl { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
+    /* ─── PROMPTS & LAB ─── */
+    .prompts-section {
+      padding: 90px 64px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .prompts-inner { max-width: 1100px; margin: 0 auto; }
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .prompt-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+    .prompt-card:hover { border-color: var(--purple-light); }
+    .prompt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .prompt-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(123,92,240,0.15);
+      color: var(--purple-light);
+      border: 1px solid rgba(123,92,240,0.3);
+    }
+    .prompt-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .prompt-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .code-box {
+      background: #08080d;
+      border: 1px solid #1f1f2e;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      color: #c4b5fd;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    .code-tag { color: var(--gold); font-weight: bold; }
+
+    @media (max-width: 900px) {
+      .prompts-section { padding: 60px 24px; }
+      .prompts-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── AWARDS ─── */
     .awards-section {
       padding: 90px 64px;
@@ -683,7 +757,9 @@
   <div class="nav-links">
     <a href="#trajetoria">Trajetória</a>
     <a href="#cases">Cases</a>
+    <a href="#prompts">Prompts &amp; IA</a>
     <a href="#premiacoes">Prêmios</a>
+    <a href="#momentos">Momentos</a>
     <a href="#stack">Stack</a>
     <a href="#sobre">Sobre</a>
     <a href="https://www.linkedin.com/in/luana-de-paula-oliveira/" target="_blank" class="nav-cta">LinkedIn →</a>
@@ -1035,6 +1111,85 @@
           <div class="case-metric-num">50+</div>
           <div class="case-metric-lbl">projetos de implementação entregues com sucesso</div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROMPTS & LAB ─── -->
+<section class="prompts-section" id="prompts">
+  <div class="prompts-inner">
+    <div class="s-label">Experimentações &amp; Engenharia de Prompt</div>
+    <div class="s-title">Como eu construo<br>soluções com <em>LLMs</em></div>
+    <p class="awards-subtitle" style="margin-top: 10px; margin-bottom: 20px;">
+      Exemplos práticos de prompts estruturados, orquestração de agentes e automações integradas que utilizei no ambiente corporativo.
+    </p>
+
+    <div class="prompts-grid">
+
+      <!-- Prompt 1: Onboarding Personalizado -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <span class="prompt-badge">Engenharia de Prompt / GenAI</span>
+          <span style="font-size: 20px;">🧩</span>
+        </div>
+        <div class="prompt-title">Prompt: Gerador de Trilhas de Onboarding por Perfil</div>
+        <div class="prompt-desc">
+          Estrutura com Persona, Delimitadores XML, Contexto Organizacional e saída em JSON estrito para alimentar diretamente a UI do portal de onboarding.
+        </div>
+        <div class="code-box"><span class="code-tag">&lt;role&gt;</span>
+Você é um Especialista em People Analytics e Cultura Organizacional do Gran.
+<span class="code-tag">&lt;/role&gt;</span>
+
+<span class="code-tag">&lt;context&gt;</span>
+O colaborador recém-contratado acaba de entrar na área de {area} no nível {senioridade}.
+Objetivo: Gerar uma jornada de 30 dias focada em aculturamento e ritos do time.
+<span class="code-tag">&lt;/context&gt;</span>
+
+<span class="code-tag">&lt;instructions&gt;</span>
+1. Mapeie 4 marcos semanais (Semana 1 a 4) com 3 micro-ações práticas.
+2. Sugira 2 padrinhos ou conexões estratégicas de áreas transversais.
+3. Responda estritamente no esquema JSON abaixo.
+<span class="code-tag">&lt;/instructions&gt;</span>
+
+<span class="code-tag">&lt;output_format&gt;</span>
+{
+  "resumo_perfil": "string",
+  "marcos_semanais": [{"semana": 1, "acoes": []}],
+  "checkpoints_feedback": ["dia 15", "dia 30"]
+}
+<span class="code-tag">&lt;/output_format&gt;</span></div>
+      </div>
+
+      <!-- Prompt 2: Automação e Agentes no n8n -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <span class="prompt-badge">Automação n8n + IA</span>
+          <span style="font-size: 20px;">⚡</span>
+        </div>
+        <div class="prompt-title">Fluxo: Agente de Triagem e Feedback Operacional</div>
+        <div class="prompt-desc">
+          Pipeline que recebe respostas de colaboradores, analisa sentimento com LLM, identifica gargalos de processos e aciona automações de resposta.
+        </div>
+        <div class="code-box"><span class="code-tag">[Fluxo de Execução - n8n Workflow]</span>
+
+1. 📥 Webhook Trigger (Formulário / Integração Slack)
+   ↳ Payload: Feedback textual do colaborador
+
+2. 🧠 Node: LLM Reasoning (Claude 3.5 Sonnet / GPT-4o)
+   ↳ Prompt de Sistema:
+     "Analise o relato abaixo buscando gargalos operacionais:
+      - Classificação: [Processo, Ferramenta, Gestão, Dúvida]
+      - Gravidade: [Baixa, Média, Crítica]
+      - Sugestão de ação imediata"
+
+3. 🔀 Node: Switch / Router Condicional
+   ↳ Se Gravidade == Crítica ➔ Notificação prioritária no canal de People
+   ↳ Se Dúvida de Processo ➔ Resposta automática com link da base de conhecimento
+
+4. 📊 Node: Google Sheets / Data Warehouse
+   ↳ Alimentação em tempo real do Dashboard de People Analytics (-32% tempo)</div>
       </div>
 
     </div>
