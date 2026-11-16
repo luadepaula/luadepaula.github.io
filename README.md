@@ -17,13 +17,13 @@ O projeto foi prototipado e construído utilizando **Antigravity AI (Vibe Coding
 
 ## 🤖 Experimentações & Engenharia de Prompt (Documentação)
 
-Você pode conferir os prompts e a arquitetura das soluções diretamente nos arquivos desta pasta:
+Você pode conferir os prompts e a arquitetura das soluções diretamente nos arquivos:
 
-- 📄 [**Prompt: Gerador de Trilhas de Onboarding Personalizadas**](./prompts/prompt-onboarding.md)
+- 📄 [**Prompt: Gerador de Trilhas de Onboarding Personalizadas**](https://github.com/luadepaula/luadepaula.github.io/blob/main/prompts/prompt-onboarding.md)
   - Estrutura de prompt com delimitação XML, Few-shot e saída estrita em JSON para interfaces web.
   - *Impacto:* Base da ferramenta com **95% de aceitação interna**.
 
-- ⚡ [**Prompt & Pipeline: Agente de Triagem e Feedback Operacional**](./prompts/prompt-agente-triagem.md)
+- ⚡ [**Prompt & Pipeline: Agente de Triagem e Feedback Operacional**](https://github.com/luadepaula/luadepaula.github.io/blob/main/prompts/prompt-agente-triagem.md)
   - Integração de LLM (Claude/GPT-4o) com orquestrador de fluxos **n8n**, análise de sentimento e roteamento condicional.
   - *Impacto:* **-32% de tempo operacional** gasto em triagens manuais.
 
