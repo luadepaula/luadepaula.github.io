@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luana de Paula Oliveira | AI Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C3CE1;
+      --primary-light: #8B5CF6;
+      --accent: #F59E0B;
+      --dark: #0F0F1A;
+      --dark2: #1A1A2E;
+      --card: #1E1E35;
+      --text: #E2E8F0;
+      --muted: #94A3B8;
+      --border: rgba(108,60,225,0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15,15,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary-light);
+      letter-spacing: -0.5px;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 40px 80px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(108,60,225,0.15) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(108,60,225,0.15);
+      border: 1px solid var(--border);
+      color: var(--primary-light);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+
+    /* METRICS */
+    .metrics {
+      padding: 60px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      background: var(--dark2);
+    }
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 40px;
+      text-align: center;
+      min-width: 180px;
+      transition: transform 0.2s;
+    }
+    .metric-card:hover { transform: translateY(-4px); }
+    .metric-number {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* SECTION */
+    section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      color: var(--primary-light);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+    }
+
+    /* CASES */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary-light);
+    }
+    .case-emoji { font-size: 36px; margin-bottom: 16px; }
+    .case-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .case-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .case-result {
+      background: rgba(108,60,225,0.1);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+    }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* STACK */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .stack-category {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stack-category h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-light);
+      margin-bottom: 12px;
+    }
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stack-item::before {
+      content: '▸';
+      color: var(--primary-light);
+      font-size: 10px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .about-text p strong { color: var(--text); }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlight-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .highlight-icon { font-size: 20px; }
+
+    /* CONTACT */
+    .contact-section {
+      text-align: center;
+      padding: 80px 40px;
+      background: var(--dark2);
+    }
+    .contact-section .section-title { margin-bottom: 16px; }
+    .contact-sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 36px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-link:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .metrics { padding: 40px 20px; }
+      section { padding: 60px 20px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">luana.oliveira</div>
+    <div class="nav-links">
+      <a href="#cases">Cases</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">Sobre</a>
+      <a href="#contact">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-badge">✦ AI Builder · Administração + Inteligência Artificial</div>
+      <h1>Transformo regras de negócio<br>em <span>soluções reais com IA</span></h1>
+      <p class="hero-sub">
+        Profissional de Pessoas & Cultura com MBA em Ciências Comportamentais e Tecnólogo em IA. 
+        Construo automações, agentes e ferramentas que resolvem problemas corporativos de ponta a ponta.
+      </p>
+      <div class="hero-cta">
+        <a href="#cases" class="btn-primary">Ver Cases →</a>
+        <a href="https://linkedin.com/in/luanadepaula" target="_blank" class="btn-outline">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric-card">
+      <div class="metric-number">-32%</div>
+      <div class="metric-label">Tempo operacional<br>reduzido com automação</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">95%</div>
+      <div class="metric-label">Taxa de aceitação<br>de ferramenta interna com IA</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">+37%</div>
+      <div class="metric-label">Retenção de equipe<br>em gestão de projetos</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">50+</div>
+      <div class="metric-label">Projetos gerenciados<br>em ambiente SaaS B2B</div>
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <section id="cases">
+    <div class="section-label">Portfólio</div>
+    <div class="section-title">Cases com Impacto Real</div>
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-emoji">🤖</div>
+        <div class="case-title">Portal de Onboarding Inteligente</div>
+        <div class="case-desc">
+          Desenvolvi um portal de integração de colaboradores personalizado por perfil, 
+          utilizando Vibe Coding com IA Generativa e banco de dados dinâmico. 
+          A ferramenta substitui um processo 100% manual e genérico, 
+          escalando a experiência de entrada para diferentes públicos simultaneamente.
+        </div>
+        <div class="case-result">✦ 95% de aceitação interna · Deployado em produção</div>
+        <div class="case-tags">
+          <span class="tag">Vibe Coding</span>
+          <span class="tag">GenAI</span>
+          <span class="tag">HTML/CSS/JS</span>
+          <span class="tag">Banco de Dados</span>
+          <span class="tag">Employee Experience</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-emoji">⚡</div>
+        <div class="case-title">Automação de Comunicação Interna</div>
+        <div class="case-desc">
+          Mapeei os fluxos de comunicação interna de uma EdTech com mais de 1.000 colaboradores 
+          e redesenhei os processos utilizando automações com IA e integração entre ferramentas. 
+          Eliminou tarefas manuais repetitivas e padronizou os canais de informação da empresa.
+        </div>
+        <div class="case-result">✦ -32% no tempo operacional da equipe</div>
+        <div class="case-tags">
+          <span class="tag">Automação</span>
+          <span class="tag">n8n</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">Mapeamento de Processos</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-emoji">📊</div>
+        <div class="case-title">Governança de Dados & Dashboards com IA</div>
+        <div class="case-desc">
+          Estruturei a governança de OKRs e indicadores estratégicos de uma diretoria, 
+          construindo dashboards analíticos em Power BI para suporte à tomada de decisão executiva. 
+          Utilizei IA para interpretar os dados e gerar insights automatizados para comitês mensais.
+        </div>
+        <div class="case-result">✦ OKR Champion · Relatórios para C-Level</div>
+        <div class="case-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">People Analytics</span>
+          <span class="tag">OKRs</span>
+          <span class="tag">IA Generativa</span>
+          <span class="tag">Excel Avançado</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" style="background: var(--dark2); max-width: 100%; padding: 80px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-label">Ferramentas</div>
+      <div class="section-title">Stack de AI Builder</div>
+      <div class="stack-grid">
+        <div class="stack-category">
+          <h4>IA Generativa & Agentes</h4>
+          <div class="stack-item">ChatGPT (OpenAI)</div>
+          <div class="stack-item">Claude (Anthropic)</div>
+          <div class="stack-item">Gemini (Google)</div>
+          <div class="stack-item">Prompt Engineering Avançado</div>
+        </div>
+        <div class="stack-category">
+          <h4>Vibe Coding</h4>
+          <div class="stack-item">Antigravity AI</div>
+          <div class="stack-item">HTML / CSS / JS</div>
+          <div class="stack-item">Prototipação Rápida</div>
+          <div class="stack-item">Integração de APIs</div>
+        </div>
+        <div class="stack-category">
+          <h4>Automação</h4>
+          <div class="stack-item">n8n</div>
+          <div class="stack-item">Mapeamento de Processos</div>
+          <div class="stack-item">Bizagi / 5W2H</div>
+          <div class="stack-item">Workflows com IA</div>
+        </div>
+        <div class="stack-category">
+          <h4>Dados & Analytics</h4>
+          <div class="stack-item">Power BI</div>
+          <div class="stack-item">Excel Avançado</div>
+          <div class="stack-item">People Analytics</div>
+          <div class="stack-item">Governança de OKRs</div>
+        </div>
+        <div class="stack-category">
+          <h4>Gestão & Projetos</h4>
+          <div class="stack-item">Scrum / Kanban</div>
+          <div class="stack-item">PMBOK (PMI-DF)</div>
+          <div class="stack-item">Pipefy / Salesforce</div>
+          <div class="stack-item">Gestão de Stakeholders</div>
+        </div>
+        <div class="stack-category">
+          <h4>Idiomas</h4>
+          <div class="stack-item">Português (Nativo)</div>
+          <div class="stack-item">Inglês (Avançado)</div>
+          <div class="stack-item">Espanhol (Avançado)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Sobre</div>
+    <div class="section-title">Quem sou eu</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Sou <strong>Administradora pela UnB</strong>, com MBA em Ciências Comportamentais e 
+          Tecnólogo em Inteligência Artificial em andamento. Minha trajetória conecta 
+          <strong>visão de negócio, comportamento humano e tecnologia</strong>.
+        </p>
+        <p>
+          Comecei em Empresa Júnior na UnB (AD&M), passei por startups de HRTech (ImpulseUp), 
+          mercado financeiro (Wiz Co) e EdTech (Gran), sempre com foco em 
+          <strong>construir soluções que geram eficiência e escala operacional</strong>.
+        </p>
+        <p>
+          Como <strong>Gerente de Projetos voluntária no PMI-DF</strong>, lidero iniciativas 
+          institucionais com base em metodologias ágeis globais. 
+          Fiz intercâmbio com bolsa na Espanha e tenho inglês e espanhol avançados.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="highlight-icon">🎓</span>
+          <span>Bacharelado em Administração — UnB (2022)</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🤖</span>
+          <span>Tecnólogo em Inteligência Artificial — Em andamento</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🏆</span>
+          <span>Prêmio ABTD — Destaque Regional em Gestão de Pessoas</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">📋</span>
+          <span>Gerente de Projetos — PMI-DF (Project Management Institute)</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🌍</span>
+          <span>Intercâmbio com bolsa — Universidad de Córdoba, Espanha</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🥈</span>
+          <span>2º lugar — Bootcamp EloGroup (Transformação Digital)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="section-label" style="margin-bottom:12px;">Contato</div>
+    <div class="section-title">Vamos construir algo juntos?</div>
+    <p class="contact-sub">Aberta a oportunidades em inovação, projetos e soluções com IA.</p>
+    <div class="contact-links">
+      <a href="mailto:luana2806@gmail.com" class="contact-link">✉ luana2806@gmail.com</a>
+      <a href="https://linkedin.com/in/luanadepaula" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://github.com/luadepaula" target="_blank" class="contact-link">🐙 GitHub</a>
+    </div>
+  </div>
+
+  <footer>
+    Construído com IA & Vibe Coding · Luana de Paula Oliveira © 2026
+  </footer>
+
+</body>
+</html>
